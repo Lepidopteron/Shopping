@@ -10,6 +10,7 @@ import UIKit
 
 class ShoppingTVC: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var amountStepper: UIStepper!
     @IBOutlet weak var amountLabel: UILabel!

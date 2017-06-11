@@ -12,8 +12,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currencyButton: UIBarButtonItem!
+    @IBOutlet weak var checkoutButton: UIBarButtonItem!
+    
     let currencyPickerView = UIPickerView(frame:CGRect(x: 0, y: 73, width: 260, height: 94))
     var currencyData: CurrencyData?
+    var isAmountSelectionEnabled = true
     
     private var _currentCurrency: Currency = .USD
     var currentCurrency: Currency {
@@ -32,11 +35,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         self.currencyButton.title = self.currentCurrency.rawValue
         self.currencyPickerView.delegate = self
         self.currencyPickerView.dataSource = self
         
+        self.tableView.dataSource = self
+        self.tableView.delegate = self;
+        self.tableView.register(UINib(nibName: "ShoppingResultHeaderView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "ShoppingResultHeaderView")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -84,9 +89,26 @@ class ViewController: UIViewController {
             self.currencyPickerView.frame.size.width = alertView.view.frame.size.width
         })
     }
+    
+    @IBAction func clickedCheckoutButton(_ sender: Any) {
+        self.isAmountSelectionEnabled = false
+        self.checkoutButton.isEnabled = false
+        self.tableView.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        if view is ShoppingResultHeaderView {
+            let v = view as! ShoppingResultHeaderView
+            v.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 46.0
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -107,12 +129,25 @@ extension ViewController: UITableViewDataSource {
             }
         }
         let price = good.price * currencyExchangeRate
+        
         cell.nameLabel.text = "\(good.name) - \(String(format: "%.2f", price)) per \(good.unit)"
         cell.amountChanged(cell.amountStepper)
+        if (!self.isAmountSelectionEnabled) {
+            cell.amountStepper.isHidden = true
+            cell.priceLabel.isHidden = false
+            cell.priceLabel.text = String(format: "%.2f", cell.amountStepper.value*price)
+        }
         return cell
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ShoppingResultHeaderView") as! ShoppingResultHeaderView
+        headerView.priceLabel.text = "####.##"  // set this however is appropriate for your app's model
+        return headerView
+    }
+}
 
 extension ViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

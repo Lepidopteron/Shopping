@@ -26,6 +26,8 @@
 		21C6E5C11EEDAE7C0061EB6F /* currencyDataJSON_valid2.json in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E5BF1EEDAE770061EB6F /* currencyDataJSON_valid2.json */; };
 		21C6E5C31EEDB93A0061EB6F /* currencyDataJSON_invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E5C21EEDB9360061EB6F /* currencyDataJSON_invalid.json */; };
 		21C6E5C51EEDBB060061EB6F /* CurrencyDataIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E5C41EEDBB040061EB6F /* CurrencyDataIntegrationTests.swift */; };
+		21C6E5CD1EEDD14D0061EB6F /* ShoppingResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E5CB1EEDD1440061EB6F /* ShoppingResultHeaderView.swift */; };
+		21C6E5CE1EEDD14D0061EB6F /* ShoppingResultHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E5CC1EEDD1440061EB6F /* ShoppingResultHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		21C6E5BF1EEDAE770061EB6F /* currencyDataJSON_valid2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencyDataJSON_valid2.json; sourceTree = "<group>"; };
 		21C6E5C21EEDB9360061EB6F /* currencyDataJSON_invalid.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencyDataJSON_invalid.json; sourceTree = "<group>"; };
 		21C6E5C41EEDBB040061EB6F /* CurrencyDataIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataIntegrationTests.swift; sourceTree = "<group>"; };
+		21C6E5CB1EEDD1440061EB6F /* ShoppingResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingResultHeaderView.swift; sourceTree = "<group>"; };
+		21C6E5CC1EEDD1440061EB6F /* ShoppingResultHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingResultHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				21C6E5B61EEDA68B0061EB6F /* ShoppingTVC.swift */,
+				21C6E5CB1EEDD1440061EB6F /* ShoppingResultHeaderView.swift */,
+				21C6E5CC1EEDD1440061EB6F /* ShoppingResultHeaderView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C6E5CE1EEDD14D0061EB6F /* ShoppingResultHeaderView.xib in Resources */,
 				21C6E5911EEDA5930061EB6F /* LaunchScreen.storyboard in Resources */,
 				21C6E58E1EEDA5930061EB6F /* Assets.xcassets in Resources */,
 				21C6E58C1EEDA5930061EB6F /* Main.storyboard in Resources */,
@@ -286,6 +293,7 @@
 				21C6E5AD1EEDA6170061EB6F /* CurrencyDataError.swift in Sources */,
 				21C6E5871EEDA5930061EB6F /* AppDelegate.swift in Sources */,
 				21C6E5AF1EEDA6320061EB6F /* Constants.swift in Sources */,
+				21C6E5CD1EEDD14D0061EB6F /* ShoppingResultHeaderView.swift in Sources */,
 				21C6E5B31EEDA65C0061EB6F /* GoodsDataSource.swift in Sources */,
 				21C6E5B71EEDA68B0061EB6F /* ShoppingTVC.swift in Sources */,
 				21C6E5BA1EEDA6CB0061EB6F /* CurrencyModelSerializer.swift in Sources */,

@@ -39,9 +39,9 @@ struct CurrencyData: Codable{
         else {
             return 0.0 // Error, rate should not be zero
         }
-        print("Rate from \(fromCurrency.rawValue) to USD: \(1 / rateToUSD)")
-        print("Rate from USD to \(toCurrency.rawValue): \(rateFromUSD)")
-        print("Rate from \(fromCurrency.rawValue) to \(toCurrency.rawValue): \(exchangeRate)")
+//        print("Rate from \(fromCurrency.rawValue) to USD: \(1 / rateToUSD)")
+//        print("Rate from USD to \(toCurrency.rawValue): \(rateFromUSD)")
+//        print("Rate from \(fromCurrency.rawValue) to \(toCurrency.rawValue): \(exchangeRate)")
         return exchangeRate
     }
     
