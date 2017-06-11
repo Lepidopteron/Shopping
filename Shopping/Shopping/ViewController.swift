@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let currencyPickerView = UIPickerView(frame:CGRect(x: 0, y: 73, width: 260, height: 94))
     var currencyData: CurrencyData?
     var isAmountSelectionEnabled = true
+    var goodsPrices = [Double]()
     
     private var _currentCurrency: Currency = .USD
     var currentCurrency: Currency {
@@ -32,6 +33,17 @@ class ViewController: UIViewController {
         }
     }
     
+    var currencyExchangeRate: Double {
+        get {
+            var currencyExchangeRate = 1.0
+            if let _currencyData = self.currencyData {
+                if let _ = _currencyData.quotes {
+                    currencyExchangeRate = _currencyData.exchangeRate(from: .USD, to: self.currentCurrency)
+                }
+            }
+            return currencyExchangeRate
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +118,9 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isAmountSelectionEnabled {
+            return 0
+        }
         return 46.0
     }
     
@@ -122,13 +137,7 @@ extension ViewController: UITableViewDataSource {
         
         //let object = objects[indexPath.section][indexPath.row]
         let good = goods[indexPath.row]
-        var currencyExchangeRate = 1.0
-        if let _currencyData = self.currencyData {
-            if let _ = _currencyData.quotes {
-                currencyExchangeRate = _currencyData.exchangeRate(from: .USD, to: self.currentCurrency)
-            }
-        }
-        let price = good.price * currencyExchangeRate
+        let price = good.price * self.currencyExchangeRate
         
         cell.nameLabel.text = "\(good.name) - \(String(format: "%.2f", price)) per \(good.unit)"
         cell.amountChanged(cell.amountStepper)
@@ -143,8 +152,25 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if isAmountSelectionEnabled {
+            return nil
+        }
+        
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ShoppingResultHeaderView") as! ShoppingResultHeaderView
-        headerView.priceLabel.text = "####.##"  // set this however is appropriate for your app's model
+        
+        var totalAmount = 0.0
+        let numberOfRows = tableView.numberOfRows(inSection: section)
+        // one could also store the selected amount in a separate data array
+        for row in 0...numberOfRows {
+            if let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) as? ShoppingTVC {
+                let good = goods[row]
+                let price = good.price * cell.amountStepper.value
+                totalAmount += price
+            }
+        }
+        
+        headerView.priceLabel.text = String(format: "%.2f", totalAmount * currencyExchangeRate)
         return headerView
     }
 }
