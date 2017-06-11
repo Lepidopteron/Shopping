@@ -9,7 +9,6 @@
 import Foundation
 
 class CurrencyModelSerializer {
-    let urlString = CurrencyData.apiUrlForCurrency(.USD)
     var currencyData: CurrencyData?
     
     func loadCurrencyFromURL(fromUrl urlString: String, _ success: ((CurrencyData) -> Swift.Void)?, _ failure: ((CurrencyData?, Error?) -> Swift.Void)?) {
@@ -17,6 +16,7 @@ class CurrencyModelSerializer {
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let _error = error {
+                print(_error.localizedDescription)
                 if let _failure = failure {
                     _failure(nil, _error)
                 }
@@ -42,13 +42,12 @@ class CurrencyModelSerializer {
         do {
             let _currencyData = try decoder.decode(CurrencyData.self, from: _data)
             if _currencyData.success {
-                guard let _quotes = _currencyData.quotes else {
+                guard let _ = _currencyData.quotes else {
                     if let _failure = failure {
                         _failure(nil, nil)
                     }
                     return
                 }
-                print(_quotes)
                 if let _success = success {
                     _success(_currencyData)
                 }

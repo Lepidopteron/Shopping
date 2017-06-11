@@ -8,6 +8,20 @@
 
 import Foundation
 
+// Make an array of Currencies enum for simple user selection
+// https://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type/28341290#28341290
+func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    var i = 0
+    return AnyIterator {
+        let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
+        if next.hashValue != i { return nil }
+        i += 1
+        return next
+    }
+}
+
+
+
 /*
  *  Currencies returned by http://www.apilayer.net/api/live?access_key=3afe856274d76909c7efa6e537e00640
  *  Used the app Patterns with appropriate regex to generate this enum
@@ -15,6 +29,11 @@ import Foundation
  *  Replacement: case $1 = "$1"
  */
 enum Currency: String {
+    static let CURRENCIES = Array(iterateEnum(Currency.self))
+    static let count: Int = {
+        CURRENCIES.count
+    }()
+    
     case AED = "AED"
     case AFN = "AFN"
     case ALL = "ALL"
