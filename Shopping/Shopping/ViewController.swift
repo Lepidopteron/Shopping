@@ -91,7 +91,7 @@ class ViewController: UIViewController {
             title: "Change your currency",
             message: "\n\n\n\n\n\n\n",
             preferredStyle: .alert)
-        self.currencyPickerView.selectRow(Currency.CURRENCIES.index(of: .USD)!, inComponent: 0, animated: false)
+        self.currencyPickerView.selectRow(Currency.CURRENCIES.index(of: self.currentCurrency)!, inComponent: 0, animated: false)
         
         alertView.view.addSubview(self.currencyPickerView)
         
