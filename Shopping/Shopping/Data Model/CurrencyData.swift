@@ -7,7 +7,9 @@
 //
 
 import Foundation
-struct CurrencyData: Codable{
+
+struct CurrencyData: Codable {
+    
     var success: Bool
     var terms: String?
     var privacy: String?
@@ -18,7 +20,6 @@ struct CurrencyData: Codable{
     
     static func apiUrlForCurrency(_ currency: Currency) -> String {
         return API_CURRENCY_URL+"&source=\(currency)"
-        //return "https://..../\(id)"
     }
     
     /*
@@ -29,7 +30,6 @@ struct CurrencyData: Codable{
         var exchangeRate = 1.0
         
         // As we got only the "light" version of currencylayer, we have to convert to "fromCurrency" to USD and then convert this to "toCurrency"
-        // fromCurrency to USD - concatenate string.
         let rateToUSD = exchangeRateFromUSD(to: fromCurrency)
         let rateFromUSD = exchangeRateFromUSD(to: toCurrency)
         

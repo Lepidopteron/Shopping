@@ -51,7 +51,6 @@ class CurrencyModelSerializer {
                 if let _success = success {
                     _success(_currencyData)
                 }
-                //_currencyData.exchangeRate(from: .GBP, to: .EUR)
             }
             else {
                 guard let _error = _currencyData.error else {

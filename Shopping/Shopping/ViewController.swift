@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     let currencyPickerView = UIPickerView(frame:CGRect(x: 0, y: 73, width: 260, height: 94))
     var currencyData: CurrencyData?
     var isAmountSelectionEnabled = true
-    var goodsPrices = [Double]()
     
     private var _currentCurrency: Currency = .USD
     var currentCurrency: Currency {
@@ -135,7 +134,6 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTVC", for: indexPath) as! ShoppingTVC
         
-        //let object = objects[indexPath.section][indexPath.row]
         let good = goods[indexPath.row]
         let price = good.price * self.currencyExchangeRate
         
@@ -153,7 +151,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if isAmountSelectionEnabled {
+        if self.isAmountSelectionEnabled {
             return nil
         }
         

@@ -12,7 +12,6 @@
 		21C6E58C1EEDA5930061EB6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E58A1EEDA5930061EB6F /* Main.storyboard */; };
 		21C6E58E1EEDA5930061EB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E58D1EEDA5930061EB6F /* Assets.xcassets */; };
 		21C6E5911EEDA5930061EB6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C6E58F1EEDA5930061EB6F /* LaunchScreen.storyboard */; };
-		21C6E59C1EEDA5930061EB6F /* ShoppingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E59B1EEDA5930061EB6F /* ShoppingTests.swift */; };
 		21C6E5A91EEDA5D30061EB6F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E5A81EEDA5D30061EB6F /* Currency.swift */; };
 		21C6E5AB1EEDA5FA0061EB6F /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E5AA1EEDA5FA0061EB6F /* CurrencyData.swift */; };
 		21C6E5AD1EEDA6170061EB6F /* CurrencyDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C6E5AC1EEDA6170061EB6F /* CurrencyDataError.swift */; };
@@ -49,7 +48,6 @@
 		21C6E5901EEDA5930061EB6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21C6E5921EEDA5930061EB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C6E5971EEDA5930061EB6F /* ShoppingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21C6E59B1EEDA5930061EB6F /* ShoppingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTests.swift; sourceTree = "<group>"; };
 		21C6E59D1EEDA5930061EB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C6E5A81EEDA5D30061EB6F /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		21C6E5AA1EEDA5FA0061EB6F /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		21C6E59A1EEDA5930061EB6F /* ShoppingTests */ = {
 			isa = PBXGroup;
 			children = (
-				21C6E59B1EEDA5930061EB6F /* ShoppingTests.swift */,
 				21C6E59D1EEDA5930061EB6F /* Info.plist */,
 				21C6E5BD1EEDAE770061EB6F /* CurrencyData */,
 			);
@@ -305,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21C6E5BC1EEDA8EE0061EB6F /* CurrencyDataUnitTests.swift in Sources */,
-				21C6E59C1EEDA5930061EB6F /* ShoppingTests.swift in Sources */,
 				21C6E5C51EEDBB060061EB6F /* CurrencyDataIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +520,7 @@
 				21C6E5A21EEDA5930061EB6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21C6E5A31EEDA5930061EB6F /* Build configuration list for PBXNativeTarget "ShoppingTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +529,7 @@
 				21C6E5A51EEDA5930061EB6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
